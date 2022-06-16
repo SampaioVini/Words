@@ -6,6 +6,10 @@ plugins {
 android {
     compileSdk 31
 
+    buildFeatures{
+        databinding = true
+        viewBinding = true
+    }
     defaultConfig {
         applicationId "com.ds.words"
         minSdk 19
