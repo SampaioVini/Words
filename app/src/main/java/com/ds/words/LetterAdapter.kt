@@ -1,5 +1,6 @@
 package com.ds.words
 
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,15 @@ class LetterAdapter :
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
         val item = list.get(position)
         holder.button.text = item.toString()
+        holder.button.setOnClickListener {
+            val context = holder.view.context
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("letter", holder.button.text.toString())
+            context.startActivity(intent)
+
+
+        }
+
     }
 
     // Setup custom accessibility delegate to set the text read with
@@ -62,7 +72,7 @@ class LetterAdapter :
             // accessibility service announces "double tap to activate".
             // If a custom string is provided,
             // it announces "double tap to <custom string>".
-            val customString = host?.context?.getString(R.string.look_up_words)
+            val customString = host?.context?.getString(R.string.look_up_word)
             val customClick =
                 AccessibilityNodeInfo.AccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLICK,

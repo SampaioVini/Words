@@ -17,7 +17,8 @@ class DetailActivity : AppCompatActivity() {
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val letterId = "A"
+        val letterId = intent?.extras?.getString("letter").toString()
+
 
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -28,6 +29,12 @@ class DetailActivity : AppCompatActivity() {
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
 
-        title = getString(R.string.detail_prefix) + " " + letterId
+        title =  letterId
+
     }
+    companion object {
+        const val LETTER = "letter"
+        const val SEARCH_PREFIX = "https://ead.univali.br/blog/as-6-linguagens-de-programacao-mais-usadas-no-mundo"
+    }
+
 }

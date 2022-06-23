@@ -1,6 +1,7 @@
 package com.ds.words
 
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -66,6 +67,11 @@ class WordAdapter(private val letterId: String, context: Context) :
 
         // Set the text of the WordViewHolder
         holder.button.text = item
+
+        holder.button.setOnClickListener {
+            val queryUrl: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+        }
+
 
     }
     // Setup custom accessibility delegate to set the text read with
